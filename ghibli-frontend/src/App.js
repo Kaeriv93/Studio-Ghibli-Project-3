@@ -1,7 +1,7 @@
 import Header from "./Components/Header";
 import Main from "./Components/Main";
-import './styles/App.css';
-import List from "./Components/Test";
+import './App.css';
+import List from "./Components/namel8r";
 import SearchContainer from "./Components/searchContainer";
 function App() {
   return (
@@ -11,4 +11,6 @@ function App() {
     </div>
   );
 }
+
+
 export default App; 

@@ -1,7 +1,6 @@
 import '../styles/home.css'
-import '../styles/App.css'
 const Search=(props)=>{
-
+    
     return(
     
         <div className='searchbarFlex'>
@@ -14,4 +13,5 @@ const Search=(props)=>{
            
     )
 }
+
 export default Search

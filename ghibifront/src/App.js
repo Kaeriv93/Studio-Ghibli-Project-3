@@ -8,10 +8,11 @@ import Signup from "./Signup/signup";
 function App() {
   return (
     <div className="App">
-      {/* <SearchContainer/>
+      {/* <Main/>
+      <SearchContainer/>
       <Login />
       < List/> */}
-      <Signup />
+      <Signup/>
     </div>
   );
 }

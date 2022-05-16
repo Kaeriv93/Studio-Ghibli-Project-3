@@ -20,8 +20,8 @@ export default function List() {
       <div className='showpg' key={idx}>
            <div className='eachMov'> 
               <h1>{film.title}</h1>
-          <img className="gImage" src={film.image} alt={film.name} />
-        </div>
+              <img className="gImage" src={film.image} alt={film.name} />
+          </div>
         </div>
     ));
   };

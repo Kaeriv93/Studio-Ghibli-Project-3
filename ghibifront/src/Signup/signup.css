@@ -1,11 +1,12 @@
 .container{
     background-color: white;
     line-height: 2;
-    text-align: ce;
 }
 .sign{
     text-align: center;
 }
+
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 15px;
@@ -24,5 +25,5 @@ input[type=text], input[type=password] {
   }
 
   input[type=submit]:hover {
-    background-color: beige;
+    background-color: lightgreen;
   }

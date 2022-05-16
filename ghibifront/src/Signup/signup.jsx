@@ -1,8 +1,9 @@
 import './signup.css'
 import {useState,useEffect} from 'react'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 
 const Signup = () =>{
+    const navigate = useNavigate
     const [user, setUser] = useState(null)
     const [newForm, setNewForm] = useState({
         firstName:'',
@@ -19,14 +20,12 @@ const Signup = () =>{
             const response = await fetch(URL)
             const data = await response.json()
             setUser(data)
-            console.log(data)
         }
         getUserData()
     },[])
 
     const handleChange = (e) =>{
         setNewForm({...newForm, [e.target.name]:e.target.value})
-        console.log(e.target.value)
     }
 
     const handleSubmit = (e) =>{
@@ -39,6 +38,7 @@ const Signup = () =>{
             email:'',
             passwords:''
         })
+        navigate('/')
     }
 
     const createUser = async(user)=>{
@@ -74,7 +74,7 @@ const Signup = () =>{
                     <input type="text" value={newForm.email} placeholder="Enter Email" name="email" required onChange={handleChange}/>
                     <br/>
                     <label for ="password"><b>Password</b></label>
-                    <input type="text" value={newForm.password} placeholder="Enter Password" name="password" required onChange={handleChange}/>
+                    <input type="password" value={newForm.password} placeholder="Enter Password" name="password" required onChange={handleChange}/>
                     <input type="submit" value="Sign Up"/>
 
                 </div>

@@ -3,6 +3,15 @@ This full stack MERN website, is an interface in which users can search and acce
 their favorite Studio Ghibli movie. Users can create a profile, rate and comment,or discuss juicy theories about
 Studio Ghibli movies in the forum section!
 
+# API
+Api Reference URL : https://ghibliapi.herokuapp.com/films ← tested and works when trying to access title, description, and image. Can provide code snippets if needed.
+
+Api Documentation URL : https://ghibliapi.herokuapp.com/
+
+Used Sandbox to test: https://codesandbox.io/s/wizardly-rumple-5j1z7r
+
+
+
 # MVP
 1. We will provide routes, so when a specific movie is clicked on we will be taken to that page.
 Depending on which user is logged in, whenever we click on the user homepage it will take us to that specific user page.
@@ -17,10 +26,12 @@ Show Page
 ![Screen Shot 2022-05-16 at 1 00 39 AM](https://user-images.githubusercontent.com/99516928/168522847-e9a0f9cc-959c-4d28-b54d-3d11bad06d08.png)
 
 User Show Page
-https://user-images.githubusercontent.com/95429272/168387978-fddec669-4010-4bca-a0ba-4e7866fec408.png
+![show page](https://user-images.githubusercontent.com/99516928/168608213-13bd00bd-a3ca-4839-a50a-d687207363ce.png)
+
 
 main wireframe
-https://user-images.githubusercontent.com/95429272/168387933-50862187-9c8b-4496-b6ae-0d0a1923a1e9.png
+![main frame](https://user-images.githubusercontent.com/99516928/168607980-aa43d733-4e0d-409c-8870-05ec0ab20295.png)
+
 
 # Stretch Goals
 1. We like the implementation of SASS and want to get accustomed to using it. If not, then regular css should be sufficient.

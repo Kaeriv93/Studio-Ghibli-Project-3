@@ -5,14 +5,16 @@ import List from "./Components/Test";
 import SearchContainer from "./Components/searchContainer";
 import Login from "./Login/login";
 import Signup from "./Signup/signup";
+
 function App() {
   return (
     <div className="App">
-      {/* <Main/>
-      <SearchContainer/> */}
-      <Login />
-      {/* < List/>
-      <Signup/> */}
+      <Header />
+      {/* <Main/> */}
+      {/* <SearchContainer/> */}
+      {/* <Login /> */}
+      {/* < List/> */}
+      {/* <Signup/> */}
     </div>
   );
 }

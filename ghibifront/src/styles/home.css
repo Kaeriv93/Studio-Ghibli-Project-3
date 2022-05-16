@@ -1,47 +1,33 @@
 .gImage{
     width: 250px;
     height: 250px;
-    
-    }
-    .searchButton{
-    background-color: #8FBC94 ;
-    height:30px;
-    color: white;
-    }
-    .searchbarFlex{
-    display: flex ;
-    justify-content: center;
-    padding-bottom: 100px;
+    border: #799b10 solid  4px;
     }
     
-    .searchBar{
-        width: 380px;
-        height: 20px;
-        background-color: #8FBC94;
-        border: #6EB49D;
-        color: white;
-        font-size: 20px;
-        font-family: 'Patrick Hand', cursive;
+    
+.homepg{
+    display: inline-flex;
+    padding: 20px;
+    background-color: #4b967d;
+    justify-content: center;   
+}
+    .child{
+        border:black solid 1px;
+    
     
     }
-    
-    .showpg{
-    display: grid;
-       grid-template-columns: 1fr 1fr 1fr;
-      
-        
-    
-        
-    }
-    
     .eachMov{
         border: double 15px #8FBC94;
+        box-shadow: inset 0px 0px 40px 40px #9fbb4b;
         background-color: #6EB49D;
         color: rgb(255, 255, 255);
         text-align: center;
-        font-size: 15px;
+        display:grid;
+        align-content: center;
+        font-size: 12px;
         font-family: 'Patrick Hand', cursive;
-        padding: 10px; 
-        grid-gap: 5px;
+        height: 300px;
+        padding:5px
     }
+    
     

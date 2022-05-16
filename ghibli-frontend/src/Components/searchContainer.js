@@ -1,9 +1,6 @@
 import {useState} from 'react'
 import Search from './Search'
 import Results from './Results'
-import React from 'react'
-import {Link} from 'react-router-dom'
-
 const SearchContainer=()=>{
     const [query, setQuery]=useState([])
     const [results, setResults]=useState([])

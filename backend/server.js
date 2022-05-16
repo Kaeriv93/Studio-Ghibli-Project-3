@@ -24,14 +24,69 @@ app.use(express.json())
 
 //Models
 const db = require('./models')
+const { User } = require('./models')
 
 //Hitting Routes
 app.get('/', (req,res)=>{
     res.send('Hello World')
 })
 
+//Login Route
 app.get('/login', (req,res)=>{
     res.send('This is the login page')
+})
+
+app.post('/login', async function (req,res) {
+    try{
+        const foundUser = await db.User.findOne({email: req.bod.email})
+        if(!foundUser) return res.send('The password or the username is invalid')
+        const match = await bcrypt.compare(req.body.password, foundUser.password)
+        if(!match) return res.send('The password or the username is invalid')
+
+        req.session.currentUser={
+            id: foundUser._id,
+            username: foundUser.username
+        }
+    }catch(err){
+        console.log(err)
+        req.err = err
+        res.send(err)
+    }
+})
+
+app.get('/register', (req,res)=>{
+    res.send('This is the register page')
+})
+
+app.post('/register', async (req,res,next)=>{
+    try{
+        const foundUser = await User.exists({email:req.body.email})
+        if(foundUser){
+            return res.send('Already have account')
+        }
+        const salt = await bcrypt.genSalt(process.SALT_ROUNDS)
+        console.log(salt)
+        const hash = await bcrypt.hash(req.bpdy.password, salt)
+        console.log(hash)
+        req.body.password = hash
+        const newUser = await User.create(req.body)
+        return res.send('Return to login')
+    }catch(error){
+        console.log(error)
+        req.error= error
+        return next()
+    }
+})
+
+app.get('/lougout', async(req,res)=>{
+    try{
+        await req.session.destroy()
+        console.log(req.session)
+        return res.send('You are logged out!')
+    } catch(error){
+        console.log(error)
+        return res.send(error)
+    }
 })
 
 // Create User
@@ -46,6 +101,22 @@ app.get('/users', async (req,res)=>{
 app.post('/users', async(req,res)=>{
     try{
         res.json(await db.User.create(req.body))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.put('/userpage/:id', async(req,res)=>{
+    try{
+        res.json(await db.User.findByIdAndUpdate(req.params.id,req.body))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.delete('/userpage/:id', async(req,res)=>{
+    try{
+        res.json(await db.User.findByIdAndRemove(req.params.id))
     }catch(error){
         res.status(400).json(error)
     }

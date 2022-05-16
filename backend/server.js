@@ -4,9 +4,9 @@ const express = require('express')
 const {PORT = 4000, MONGODB_URL} = process.env
 const app = express()
 const mongoose = require('mongoose')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')
-const navLinks = require('./navLinks')
+// const session = require('express-session')
+// const MongoStore = require('connect-mongo')
+// const navLinks = require('./navLinks')
 
 //Import middleware
 const cors = require('cors')
@@ -34,28 +34,28 @@ app.get('/', (req,res)=>{
     res.send('Hello World')
 })
 
-app.use(
-    session({
-        // where to store the sessions in mongodb
-        store: MongoStore.create({ mongoUrl: "mongodb://localhost:27017/" }),
-        // secret key is used to sign every cookie to say its is valid
-        secret: "super secret",
-        resave: false,
-        saveUninitialized: false,
-        // configure the experation of the cookie
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24 * 7 * 2, // two weeks
-        },
-    })
-);
+// app.use(
+//     session({
+//         // where to store the sessions in mongodb
+//         store: MongoStore.create({ mongoUrl: "mongodb://localhost:27017/userpage" }),
+//         // secret key is used to sign every cookie to say its is valid
+//         secret: "super secret",
+//         resave: false,
+//         saveUninitialized: false,
+//         // configure the experation of the cookie
+//         cookie: {
+//             maxAge: 1000 * 60 * 60 * 24 * 7 * 2, // two weeks
+//         },
+//     })
+// );
 
-app.use(navLinks)
-app.use(function (req, res, next) {
-    res.locals.user = req.session.currentUser;
-    console.log(res.locals);
-    console.log(`Current user is ${res.locals.user}`)
-    next();
-});
+// app.use(navLinks)
+// app.use(function (req, res, next) {
+//     res.locals.user = req.session.currentUser;
+//     console.log(res.locals);
+//     console.log(`Current user is ${res.locals.user}`)
+//     next();
+// });
 
 
 //Login Route

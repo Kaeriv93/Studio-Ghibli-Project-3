@@ -22,9 +22,33 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 
+//Models
+const db = require('./models')
+
 //Hitting Routes
 app.get('/', (req,res)=>{
     res.send('Hello World')
+})
+
+app.get('/login', (req,res)=>{
+    res.send('This is the login page')
+})
+
+// Create User
+app.get('/users', async (req,res)=>{
+    try{
+        res.json(await db.User.find({}))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.post('/users', async(req,res)=>{
+    try{
+        res.json(await db.User.create(req.body))
+    }catch(error){
+        res.status(400).json(error)
+    }
 })
 
 //Listening

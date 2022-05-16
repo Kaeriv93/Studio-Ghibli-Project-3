@@ -169,7 +169,7 @@ app.delete('/reviews/:id', async(req,res)=>{
 })
 
 //Favorites
-app.get('/userpage/:id', async(req,res)=>{
+app.get('/userpage/:id/favorites', async(req,res)=>{
     try{
         const foundUser = await db.User.findById(req.params.id)
         if(!foundUser) return res.send('Can not find user')
@@ -179,7 +179,7 @@ app.get('/userpage/:id', async(req,res)=>{
     }
 })
 
-app.post('/userpage/:id', async(req,res, next)=>{
+app.post('/userpage/:id/favorites', async(req,res, next)=>{
     try{
         const foundUser = await db.User.findById(req.params.id)
         if(!foundUser) return res.send('Can not find user')
@@ -192,7 +192,7 @@ app.post('/userpage/:id', async(req,res, next)=>{
     }
 })
 
-app.put('/userpage/:id', async(req,res)=>{
+app.put('/userpage/:id/favorites', async(req,res)=>{
     try{
         const foundUser = await db.User.findById(req.params.id)
         if(!foundUser) return res.send('Can not find user')
@@ -202,11 +202,56 @@ app.put('/userpage/:id', async(req,res)=>{
     }
 })
 
-app.delete('/userpage/:id', async(req,res)=>{
+app.delete('/userpage/:id/favorites', async(req,res)=>{
     try{
         const foundUser = await db.User.findById(req.params.id)
         if(!foundUser) return res.send('Can not find user')
         res.json(await db.Favorite.findByIdAndRemove(req.params.id))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+
+//Friends
+app.get('/userpage/:id/friends', async(req,res)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+        res.json(await db.Friends.find({}))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.post('/userpage/:id/friends', async(req,res, next)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+       res.json(await db.Friends.create(req.body))
+
+    }catch(error){
+        console.log(error)
+        req.error = error
+        return next()
+    }
+})
+
+app.put('/userpage/:id/friends', async(req,res)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+        res.json(await db.Friends.findByIdAndUpdate(req.params.id, req.body))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.delete('/userpage/:id/friends', async(req,res)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+        res.json(await db.Friends.findByIdAndRemove(req.params.id))
     }catch(error){
         res.status(400).json(error)
     }

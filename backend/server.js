@@ -108,6 +108,14 @@ app.post('/users', async(req,res)=>{
     }
 })
 
+app.get('/userpage/:id', async(req,res)=>{
+    try{
+        res.json(await db.User.findById(req.params.id))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
 app.put('/userpage/:id', async(req,res)=>{
     try{
         res.json(await db.User.findByIdAndUpdate(req.params.id,req.body))
@@ -160,41 +168,49 @@ app.delete('/reviews/:id', async(req,res)=>{
     }
 })
 
-//Reviews
-// app.get('/reviews', async(req,res)=>{
-//     try{
-//         res.json(await db.Review.find({}))
-//     }catch(error){
-//         res.status(400).json(error)
-//     }
-// })
+//Favorites
+app.get('/userpage/:id', async(req,res)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+        res.json(await db.Favorite.find({}))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
 
-// app.post('/reviews', async(req,res, next)=>{
-//     try{
-//        res.json(await db.Review.create(req.body))
+app.post('/userpage/:id', async(req,res, next)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+       res.json(await db.Favorite.create(req.body))
 
-//     }catch(error){
-//         console.log(error)
-//         req.error = error
-//         return next()
-//     }
-// })
+    }catch(error){
+        console.log(error)
+        req.error = error
+        return next()
+    }
+})
 
-// app.put('/reviews/:id', async(req,res)=>{
-//     try{
-//         res.json(await db.Review.findByIdAndUpdate(req.params.id, req.body))
-//     }catch(error){
-//         res.status(400).json(error)
-//     }
-// })
+app.put('/userpage/:id', async(req,res)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+        res.json(await db.Favorite.findByIdAndUpdate(req.params.id, req.body))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
 
-// app.delete('/reviews/:id', async(req,res)=>{
-//     try{
-//         res.json(await db.Review.findByIdAndRemove(req.params.id))
-//     }catch(error){
-//         res.status(400).json(error)
-//     }
-// })
+app.delete('/userpage/:id', async(req,res)=>{
+    try{
+        const foundUser = await db.User.findById(req.params.id)
+        if(!foundUser) return res.send('Can not find user')
+        res.json(await db.Favorite.findByIdAndRemove(req.params.id))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
 
 //Listening
 app.listen(PORT,()=>console.log(`Listening on port:${PORT}`))

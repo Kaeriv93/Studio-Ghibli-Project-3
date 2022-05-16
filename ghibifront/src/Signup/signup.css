@@ -1,0 +1,28 @@
+.container{
+    background-color: white;
+    line-height: 2;
+    text-align: ce;
+}
+.sign{
+    text-align: center;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    height: 35px;
+    width: 75px;
+    margin-left: 48%;
+  }
+
+  input[type=submit]:hover {
+    background-color: beige;
+  }

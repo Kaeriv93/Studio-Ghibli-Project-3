@@ -1,6 +1,22 @@
 import './login.css'
+import {useState,useEffect} from 'react'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 
 const Login = ()=>{
+    const[user,setUser] = useState(null)
+
+    const URL = 'https://backend-studioghibli-app.herokuapp.com/users'
+
+    useEffect(()=>{
+        const getUserData = async()=>{
+            const response = await fetch(URL)
+            const data = await response.json()
+            setUser(data)
+            console.log(data)
+        }
+        getUserData()
+    },[])
+
     return(
         <div className="loginpage">
             <h2>Login Form</h2>

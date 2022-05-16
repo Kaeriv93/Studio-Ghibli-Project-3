@@ -38,7 +38,7 @@ app.get('/login', (req,res)=>{
 
 app.post('/login', async function (req,res) {
     try{
-        const foundUser = await db.User.findOne({email: req.bod.email})
+        const foundUser = await db.User.findOne({email: req.body.email})
         if(!foundUser) return res.send('The password or the username is invalid')
         const match = await bcrypt.compare(req.body.password, foundUser.password)
         if(!match) return res.send('The password or the username is invalid')
@@ -53,6 +53,8 @@ app.post('/login', async function (req,res) {
         res.send(err)
     }
 })
+
+// Register
 
 app.get('/register', (req,res)=>{
     res.send('This is the register page')
@@ -78,7 +80,7 @@ app.post('/register', async (req,res,next)=>{
     }
 })
 
-app.get('/lougout', async(req,res)=>{
+app.get('/logout', async(req,res)=>{
     try{
         await req.session.destroy()
         console.log(req.session)
@@ -89,7 +91,7 @@ app.get('/lougout', async(req,res)=>{
     }
 })
 
-// Create User
+// User Crud
 app.get('/users', async (req,res)=>{
     try{
         res.json(await db.User.find({}))
@@ -121,6 +123,78 @@ app.delete('/userpage/:id', async(req,res)=>{
         res.status(400).json(error)
     }
 })
+
+//Reviews
+app.get('/reviews', async(req,res)=>{
+    try{
+        res.json(await db.Review.find({}))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.post('/reviews', async(req,res, next)=>{
+    try{
+       res.json(await db.Review.create(req.body))
+
+    }catch(error){
+        console.log(error)
+        req.error = error
+        return next()
+    }
+})
+
+app.put('/reviews/:id', async(req,res)=>{
+    try{
+        res.json(await db.Review.findByIdAndUpdate(req.params.id, req.body))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+app.delete('/reviews/:id', async(req,res)=>{
+    try{
+        res.json(await db.Review.findByIdAndRemove(req.params.id))
+    }catch(error){
+        res.status(400).json(error)
+    }
+})
+
+//Reviews
+// app.get('/reviews', async(req,res)=>{
+//     try{
+//         res.json(await db.Review.find({}))
+//     }catch(error){
+//         res.status(400).json(error)
+//     }
+// })
+
+// app.post('/reviews', async(req,res, next)=>{
+//     try{
+//        res.json(await db.Review.create(req.body))
+
+//     }catch(error){
+//         console.log(error)
+//         req.error = error
+//         return next()
+//     }
+// })
+
+// app.put('/reviews/:id', async(req,res)=>{
+//     try{
+//         res.json(await db.Review.findByIdAndUpdate(req.params.id, req.body))
+//     }catch(error){
+//         res.status(400).json(error)
+//     }
+// })
+
+// app.delete('/reviews/:id', async(req,res)=>{
+//     try{
+//         res.json(await db.Review.findByIdAndRemove(req.params.id))
+//     }catch(error){
+//         res.status(400).json(error)
+//     }
+// })
 
 //Listening
 app.listen(PORT,()=>console.log(`Listening on port:${PORT}`))

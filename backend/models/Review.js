@@ -11,9 +11,13 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required:[true, `Can't leave blank`]
     },
-    user:{
+    username:{
         type: mongoose.Types.ObjectId,
         ref:'User'
+    },
+    titleofFilm:{
+        type:String,
+        required:[true, 'Need to specify which film']
     }
 },{timestamps:true})
 

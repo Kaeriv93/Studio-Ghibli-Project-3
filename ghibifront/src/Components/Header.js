@@ -3,15 +3,13 @@ import {Link} from 'react-router-dom'
 
 const Header = (props) =>{
     return(
-        <nav>
+        <nav className="navbar">
             <Link to ='/'>
                 Main
             </Link>
-            <br/>
             <Link to ='/login'>
                Login
             </Link>
-            <br/>
             <Link to ='/signup'>
                 Signup
             </Link>

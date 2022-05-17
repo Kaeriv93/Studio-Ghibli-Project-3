@@ -2,6 +2,7 @@ import Header from "./Components/Header";
 import Main from "./Components/Main";
 import './App.css';
 import {Routes,Route} from 'react-router-dom'
+import './styles/App.css';
 import List from "./Components/Test";
 // import SearchContainer from "./Components/searchContainer";
 import Login from "./Login/login";
@@ -25,9 +26,10 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
       </Router>
+
+
+
     </div>
   );
 }
-
-
 export default App; 

@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom'
 const Login = ()=>{
     const[user,setUser] = useState(null)
     const navigate = useNavigate()
+    const [newForm, setNewForm] = useState({
+        username:'',
+        password:''
+    })
 
     const URL = 'https://backend-studioghibli-app.herokuapp.com/users'
 
@@ -19,21 +23,38 @@ const Login = ()=>{
         getUserData()
     },[])
 
+    const handleChange = (e) =>{
+        setNewForm({...newForm, [e.target.name]:e.target.value})
+        console.log(e.target.value)
+    }
+
+    const handleSubmit = async event =>{
+        event.preventDefault()
+        try{
+            const foundUser = await user.findOne({username:event.target.value})
+            console.log(foundUser)
+            // navigate('/')
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+
     return user?(
         <div className="loginpage">
             <h2>Login Form</h2>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div class="imgcontainer">
                     <img src="https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png" alt="Avatar" class="avatar"/>
                 </div>
 
                 <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required/>
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required onChange={handleChange}/>
 
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required/>
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required onChange={handleChange}/>
                         
                     <button type="submit">Login</button>
                 

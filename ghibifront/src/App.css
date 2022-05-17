@@ -34,6 +34,8 @@ body{
     text-decoration: none;
     padding: 15px;
     color: white;
+    font-family: 'Patrick Hand', cursive;
+    font-weight: 700;
   }
 
   .navbar a:hover{

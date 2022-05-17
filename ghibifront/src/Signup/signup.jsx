@@ -1,9 +1,9 @@
 import './signup.css'
 import {useState,useEffect} from 'react'
-import {Routes, Route, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
-const Signup = () =>{
-    const navigate = useNavigate
+const Signup = (props) =>{
+    const navigate = useNavigate()
     const [user, setUser] = useState(null)
     const [newForm, setNewForm] = useState({
         firstName:'',
@@ -38,7 +38,7 @@ const Signup = () =>{
             email:'',
             passwords:''
         })
-        navigate('/')
+        navigate('/login')
     }
 
     const createUser = async(user)=>{

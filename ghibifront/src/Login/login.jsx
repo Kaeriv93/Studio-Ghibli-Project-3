@@ -1,9 +1,11 @@
 import './login.css'
 import {useState,useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = ()=>{
     const[user,setUser] = useState(null)
+    const navigate = useNavigate()
 
     const URL = 'https://backend-studioghibli-app.herokuapp.com/users'
 

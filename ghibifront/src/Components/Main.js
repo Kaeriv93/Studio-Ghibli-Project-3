@@ -29,7 +29,6 @@ function Main(props){
                 />}/>
                 <Route path='/:id' element={<FilmPage film={film}/>}/>
                 <Route exact path='/login' element={<Login />}/>
-                {/* <Route path='/' element ={<Main/>}/> */}
                 <Route path='/signup' element={<Signup/>}/>
             </Routes>
         </main>

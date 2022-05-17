@@ -22,3 +22,20 @@ body{
       font-family: 'Patrick Hand', cursive;
 
   }
+
+  .navbar{
+   padding: 14px 16px;
+   text-decoration: none;
+   font-size: 20px;
+   background-color: #61a09a;
+  }
+  
+  .navbar a{
+    text-decoration: none;
+    padding: 15px;
+    color: white;
+  }
+
+  .navbar a:hover{
+    background-color:#7cc46c;
+  }

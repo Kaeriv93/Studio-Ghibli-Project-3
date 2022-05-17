@@ -1,36 +1,25 @@
 import '../styles/home.css'
-import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 import '../styles/App.css'
 
-export default function List() {
-  const [film, setFilm] = useState(null);
-  const URL = "https://ghibliapi.herokuapp.com/films";
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(URL);
-      const data = await response.json();
-      setFilm(data);
-    };
-    getData();
-  }, []);
+function List(props) {
+
 
   const loaded = () => {
-    return film.map((film, idx) => ( 
-
-
+    return props.film.map((film,idx) => ( 
       <div className='homepg' key={idx}>
-
-          <div className='child'> 
-          <div className='eachMov'> 
-              <h1>{film.title}</h1>
-              <img className="gImage" src={film.image} alt={film.name} />
-          </div>
-
+        <div className='child'> 
+          <Link to={`/${idx}`}>
+            <div className='eachMov'> 
+                <h1>{film.title}</h1>
+                <img className="gImage" src={film.image} alt={film.name} />
+            </div>
+          </Link>
         </div>
-
-
-        </div>
+      </div>
     ));
   };
-  return film ? loaded() : <h1>Loading.......</h1>;
+  return props.film ? loaded() : <h1>Loading.......</h1>;
 }
+
+export default List

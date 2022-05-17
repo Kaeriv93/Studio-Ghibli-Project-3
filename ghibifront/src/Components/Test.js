@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {Link, useParams} from 'react-router-dom'
 import '../styles/App.css'
 
-export default function List() {
+function List() {
   const [film, setFilm] = useState(null);
   const URL = "https://ghibliapi.herokuapp.com/films";
   useEffect(() => {
@@ -37,3 +37,5 @@ export default function List() {
   };
   return film ? loaded() : <h1>Loading.......</h1>;
 }
+
+export default List

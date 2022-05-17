@@ -1,4 +1,5 @@
 import {useParams} from 'react-router-dom'
+import './Pages.css'
 
 const FilmPage = (props)=>{
     console.log(props)
@@ -6,8 +7,10 @@ const FilmPage = (props)=>{
     let film = props.film[id]
     return(
         <div className="showpage">
-            <h1>{film.title}</h1>
-            <img src={film.image} alt={film.title}/>
+            <div className="moviebanner">
+                <img className="backdrop" src={film.movie_banner} alt={film.title}/>
+                <h1 className="title">{film.title}</h1>
+            </div>
             <h2>Original Title</h2>
             <h2>{film.original_title}</h2>
             <h3>Description</h3>

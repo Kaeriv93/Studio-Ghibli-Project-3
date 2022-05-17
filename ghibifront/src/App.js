@@ -1,7 +1,12 @@
 import Header from './Components/Header'
 import Main from './Components/Main'
+import Footer from './Components/Footer';
 import './App.css';
 import './styles/App.css';
+
+
+
+
 
 
 
@@ -10,6 +15,7 @@ function App() {
     <div className="App">
       <Header />
       <Main />
+      <Footer/>
     </div>
   );
 }

@@ -1,0 +1,33 @@
+body{
+    color: white;
+    display: grid;
+    grid-template-columns:4fr;
+    grid-template-rows:1fr 4fr 2fr 1fr;
+    grid-template-areas: 
+    'header'
+    'main'
+    'detail'
+    'footer'
+    ;
+}
+
+.backdrop{
+    position: relative;
+    width: 100%;
+    background-attachment: fixed;
+    
+}
+
+.moviebanner{
+    grid-area:main;
+    display: flex;
+}
+
+.title{
+    position: absolute;
+    top: 95vh;
+    background-color: #EEDA9E;
+    height: 10vh;
+    font-size: 3rem;
+
+}

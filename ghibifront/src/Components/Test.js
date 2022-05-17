@@ -1,5 +1,6 @@
 import '../styles/home.css'
 import { useEffect, useState } from "react";
+import {Link, useParams} from 'react-router-dom'
 import '../styles/App.css'
 
 export default function List() {
@@ -15,21 +16,23 @@ export default function List() {
   }, []);
 
   const loaded = () => {
-    return film.map((film, idx) => ( 
+    return film.map((film) => ( 
 
 
-      <div className='homepg' key={idx}>
+      <div className='homepg' key={film._id}>
 
-          <div className='child'> 
-          <div className='eachMov'> 
-              <h1>{film.title}</h1>
-              <img className="gImage" src={film.image} alt={film.name} />
-          </div>
+        <div className='child'> 
+          <Link to={`/${film._id}`}>
+            <div className='eachMov'> 
+                <h1>{film.title}</h1>
+                <img className="gImage" src={film.image} alt={film.name} />
+            </div>
+          </Link>
 
         </div>
 
 
-        </div>
+      </div>
     ));
   };
   return film ? loaded() : <h1>Loading.......</h1>;

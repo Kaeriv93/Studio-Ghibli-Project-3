@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-
+import React from "react"
 function Main(props){
 
     return(

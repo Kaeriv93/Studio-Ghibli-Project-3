@@ -1,6 +1,6 @@
 import './login.css'
 import {useState,useEffect} from 'react'
-import {Routes, Route, useNavigate} from 'react-router-dom'
+
 
 const Login = ()=>{
     const[user,setUser] = useState(null)
@@ -17,7 +17,7 @@ const Login = ()=>{
         getUserData()
     },[])
 
-    return(
+    return user?(
         <div className="loginpage">
             <h2>Login Form</h2>
 
@@ -42,7 +42,7 @@ const Login = ()=>{
                 </div>
             </form>
         </div>
-)
+): <h1>Error on loggin</h1>
 }
 
 export default Login

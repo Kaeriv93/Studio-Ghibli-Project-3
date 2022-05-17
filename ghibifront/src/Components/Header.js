@@ -1,14 +1,19 @@
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
-import { BrowserRouter as Router } from "react-router-dom";
 import {Link} from 'react-router-dom'
-import Login from '../Login/login'
 
-const Header = () =>{
+const Header = (props) =>{
     return(
         <nav>
-            <Link to ='login'>
-                Login
+            <Link to ='/'>
+                Main
+            </Link>
+            <br/>
+            <Link to ='/login'>
+               Login
+            </Link>
+            <br/>
+            <Link to ='/signup'>
+                Signup
             </Link>
         </nav>
     )

@@ -11,23 +11,61 @@
     background-color: #4b967d;
     justify-content: center;   
 }
-    .child{
-        border:black solid 1px;
+
+.homepg a{
+    text-decoration: none;
+}
+
+.child{
+    border:black solid 1px;
     
     
     }
-    .eachMov{
-        border: double 15px #8FBC94;
-        box-shadow: inset 0px 0px 40px 40px #9fbb4b;
-        background-color: #6EB49D;
-        color: rgb(255, 255, 255);
-        text-align: center;
-        display:grid;
-        align-content: center;
-        font-size: 12px;
-        font-family: 'Patrick Hand', cursive;
-        height: 300px;
-        padding:5px
+.eachMov{
+    border: double 15px #8FBC94;
+    box-shadow: inset 0px 0px 40px 40px #9fbb4b;
+    background-color: #6EB49D;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    display:grid;
+    align-content: center;
+    font-size: 12px;
+    font-family: 'Patrick Hand', cursive;
+    height: 300px;
+    padding:5px
+}
+
+
+.totoro {
+    position: absolute;
+    animation:linear infinite;
+    animation-name:run;
+    animation-duration:20s;
+ }
+ @keyframes run  {
+    0% {
+       left:0;
+       -webkit-transform:rotateY(0deg);
     }
     
+    50% {
+       left:82%;
+       -webkit-transform:rotateY(0deg);
+    }
     
+    51% {
+       -webkit-transform:rotateY(180deg);
+    }
+    
+    99% {
+       left:0;
+       -webkit-transform:rotateY(180deg);
+    }
+    
+    100% {
+       left:0;
+       -webkit-transform:rotateY(0deg);
+    }
+ 
+ }
+ 

@@ -4,6 +4,7 @@ import FilmPage from "../Pages/FilmPage";
 import Login from '../Login/login'
 import Signup from '../Signup/signup'
 import List from './Test'
+import Success from '../Signup/success';
 
 function Main(props){
     const [film, setFilm] = useState(null);
@@ -62,6 +63,7 @@ function Main(props){
                 <Route path='/:id' element={<FilmPage film={film} review={review} createReview={createReview}/>} deleteReview={deleteReview}/>
                 <Route exact path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup/>}/>
+                <Route path='/success' element={<Success/>}/>
             </Routes>
         </main>
 

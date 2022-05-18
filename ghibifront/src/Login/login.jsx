@@ -1,42 +1,60 @@
 import './login.css'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
+import axios from 'axios'
 
 
 const Login = ()=>{
-    const[user,setUser] = useState(null)
     const navigate = useNavigate()
     const [newForm, setNewForm] = useState({
         email:'',
         password:''
     })
 
-    const URL = 'https://backend-studioghibli-app.herokuapp.com/users'
-
-    useEffect(()=>{
-        const getUserData = async()=>{
-            const response = await fetch(URL)
-            const data = await response.json()
-            setUser(data)
-            console.log(data)
-        }
-        getUserData()
-    },[])
+    const generateError = (err) => toast.error(err,{
+        position: 'bottom-right',
+    })
 
     const handleChange = (e) =>{
         setNewForm({...newForm, [e.target.name]:e.target.value})
         console.log(e.target.value)
     }
 
-    const handleSubmit = async event =>{
-        event.preventDefault()
-   
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        try{
+            const{data} = await axios.post('http://localhost:4000/login',{
+                ...newForm,
+            },
+            {
+                withCredentials:true,
+            }
+            )
+            
+            if(data){
+                if(data.errors){
+                    const {email,password} = data.errors
+                    if(email) generateError(email)
+                    else if(password) generateError(password)
+                }else{
+                    navigate('/')
+                }
+            }
+
+        } catch(err){
+            console.log(err)
+        }
+        setNewForm({
+            email:'',
+            passwords:''
+        })
     }
 
 
 
 
-    return user?(
+    return(
         <div className="loginpage">
             <h2>Login Form</h2>
 
@@ -58,8 +76,9 @@ const Login = ()=>{
 
                 </div>
             </form>
+            <ToastContainer/>
         </div>
-): <h1>Error on loggin</h1>
+)
 }
 
 export default Login

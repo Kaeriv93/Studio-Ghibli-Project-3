@@ -9,13 +9,26 @@ const FilmPage = (props)=>{
         <div className="showpage">
             <div className="moviebanner">
                 <img className="backdrop" src={film.movie_banner} alt={film.title}/>
-                <h1 className="title">{film.title}</h1>
             </div>
-            <h2>Original Title</h2>
             <h2>{film.original_title}</h2>
-            <h3>Description</h3>
-            <p>{film.description}</p>
-            <h3>Rating:{film.rt_score}</h3>
+            <div className="middle-container">
+                <div className="description-grid">
+                    <h1 className="title">{film.title}</h1>
+                    <h3 className="director">Directed by <b>{film.director}</b></h3>
+                    <hr/>
+                    <img className="film-image" src={film.image} alt={film.title}/>
+                    <div className="film-description">
+                        <h3>Description</h3>
+                        <p>{film.description}</p>
+                    </div>
+                    <ul className="detail-description">
+                        <li>Year of Production:{film.release_date}</li>
+                        <li>Runtime:{film.running_time}mins</li>
+                        <li>Producer:{film.producer}</li>
+                    </ul>
+                    <h3 className="rating">Rating:{film.rt_score}</h3>
+                </div>
+            </div>
 
         </div>
     )

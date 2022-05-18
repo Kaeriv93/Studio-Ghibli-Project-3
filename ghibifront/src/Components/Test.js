@@ -7,16 +7,23 @@ function List(props) {
 
   const loaded = () => {
     return props.film.map((film,idx) => ( 
-      <div className='homepg' key={idx}>
-        <div className='child'> 
-          <Link to={`/${idx}`}>
-            <div className='eachMov'> 
-                <h1>{film.title}</h1>
-                <img className="gImage" src={film.image} alt={film.name} />
-            </div>
-          </Link>
-        </div>
-      </div>
+      <div className='flex'>
+      <div className='flip-card' key={idx}>
+        <div className='card-inner'> 
+            <div className='card-front'> 
+                <Link to={`/${idx}`}>
+                  <h1>{film.title}</h1>
+                <img className="ghibiImage" src={film.image} alt={film.name} />
+               </Link> 
+           </div>
+           <div className="card-back">
+           <Link to={`/${idx}`}>
+              <h1>{film.description}</h1>
+              </Link>
+           </div>
+       </div>
+    </div>
+    </div>
     ));
   };
   return props.film ? loaded() : <h1>Loading.......</h1>;

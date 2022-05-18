@@ -1,7 +1,10 @@
 import {useParams} from 'react-router-dom'
+import {useState,useEffect} from 'react'
 import './Pages.css'
 
 const FilmPage = (props)=>{
+    const [review,setReview] = useState(null)
+
     console.log(props)
     let {id} = useParams()
     let film = props.film[id]
@@ -28,6 +31,9 @@ const FilmPage = (props)=>{
                     </ul>
                     <h3 className="rating">Rating:{film.rt_score}</h3>
                 </div>
+            </div>
+            <div className="review">
+                <h3>Leave a review below!</h3>
             </div>
 
         </div>

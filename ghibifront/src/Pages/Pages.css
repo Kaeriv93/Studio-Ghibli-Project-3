@@ -72,3 +72,8 @@
     grid-area: rating;
     
 }
+
+.review{
+    text-align: center;
+    color: white;
+}

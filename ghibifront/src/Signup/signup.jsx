@@ -56,7 +56,7 @@ const Signup = (props) =>{
         <div className="signup">
             <form onSubmit={handleSubmit} autoComplete="off">
                 <div className="grid-container">
-                    <div className="container">
+                    <div className="sign-container">
                         <div className="sign">
                             <h1>Sign Up</h1>
                             <p>Please fill in this form to create an account</p>

@@ -16,7 +16,7 @@ const Header = (props) =>{
             if(!cookie.jwt){
                 logout.style="display:normal"
             }else{
-                const{data} = await axios.post('http://localhost:4000',{},
+                const{data} = await axios.post('https://backend-studioghibli-app.herokuapp.com/register',{},
                 {withCredentials:true})
                 if(!data.status){
                     removeCookie('jwt')

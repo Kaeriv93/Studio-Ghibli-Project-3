@@ -5,6 +5,7 @@ import Login from '../Login/login'
 import Signup from '../Signup/signup'
 import List from './Test'
 import Success from '../Signup/success';
+import UserPage from '../Pages/UserPage';
 
 function Main(props){
     const [film, setFilm] = useState(null);
@@ -64,6 +65,7 @@ function Main(props){
                 <Route exact path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/success' element={<Success/>}/>
+                <Route path ='/userpage' element={<UserPage/>}/>
             </Routes>
         </main>
 

@@ -1,17 +1,3 @@
-body{
-    color: white;
-    display: grid;
-    grid-template-columns:4fr;
-    grid-template-rows:1fr 4fr 2fr 1fr;
-    grid-template-areas: 
-    'header'
-    'main'
-    'detail'
-    'footer'
-    ;
-    max-height: 2400px;
-}
-
 .backdrop{
     position: relative;
     width: 100%;
@@ -50,8 +36,8 @@ body{
 
 .description-grid{
     display: grid;
-    grid-template-columns: .5fr 3fr 3fr;
-    grid-template-rows: 1fr 3fr 2fr;
+    grid-template-columns: .5fr 4fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
     grid-template-areas: 
     'image space space'
     'image body body'

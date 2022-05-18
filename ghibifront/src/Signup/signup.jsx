@@ -1,10 +1,11 @@
 import './signup.css'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Signup = (props) =>{
     const navigate = useNavigate()
-    const [user, setUser] = useState(null)
     const [newForm, setNewForm] = useState({
         firstName:'',
         lastName:'',
@@ -13,24 +14,41 @@ const Signup = (props) =>{
         password:''
     })
 
-    const URL = 'https://backend-studioghibli-app.herokuapp.com/users'
+    const generateError = (err) => toast.error(err,{
+        position: 'bottom-right',
+    })
+   
 
-    useEffect(()=>{
-        const getUserData = async()=>{
-            const response = await fetch(URL)
-            const data = await response.json()
-            setUser(data)
-        }
-        getUserData()
-    },[])
+
 
     const handleChange = (e) =>{
         setNewForm({...newForm, [e.target.name]:e.target.value})
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
-        createUser(newForm)
+        try{
+            const{data} = await axios.post('http://localhost:4000/register',{
+                ...newForm,
+            },
+            {
+                withCredentials:true,
+            }
+            )
+            
+            if(data){
+                if(data.errors){
+                    const {email,password} = data.errors
+                    if(email) generateError(email)
+                    else if(password) generateError(password)
+                }else{
+
+                }
+            }
+
+        } catch(err){
+            console.log(err)
+        }
         setNewForm({
             firstName:'',
             lastName:'',
@@ -38,21 +56,11 @@ const Signup = (props) =>{
             email:'',
             passwords:''
         })
-        navigate('/login')
-    }
-
-    const createUser = async(user)=>{
-        await fetch(URL,{
-            method:'post',
-            headers:{
-                'Content-Type':'application/json',
-            },
-            body:JSON.stringify(user)
-        })
+        // navigate('/')
     }
 
 
-    return user? (
+    return(
         <div className="signup">
             <form onSubmit={handleSubmit} autoComplete="off">
                 <div className="grid-container">
@@ -82,9 +90,9 @@ const Signup = (props) =>{
                     </div>
                 </div>
             </form>
-            
+            <ToastContainer/>
         </div>
-    ): <h1>Error Cannot Access Signin Page</h1>
+    )
 }
 
 export default Signup

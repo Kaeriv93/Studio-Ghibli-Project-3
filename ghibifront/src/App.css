@@ -54,34 +54,36 @@ body{
     
   
   }
-  
-   @keyframes run  {
-    0% {
-       left:0;
-       -webkit-transform:rotateY(180deg);
-    }
-    
-    50% {
-       left:96%;
-       -webkit-transform:rotateY(180deg);
-    }
-    
-    51% {
-      
-       -webkit-transform:rotateY(0deg);
-    }
-    
-    99% {
-       left:0;
-       -webkit-transform:rotateY(0deg);
-    }
-    
-    100% {
-       left:0;
-       -webkit-transform:rotateY(0deg);
-    }
+  @keyframes run  {
+   0% {
+      left:0;
+      -webkit-transform:rotateY(180deg);
+   }
+   
+   50% {
+      left:96%;
+      -webkit-transform:rotateY(180deg);
+   }
+   
+   51% {
+     
+      -webkit-transform:rotateY(0deg);
+   }
+   
+   99% {
+      left:0;
+      -webkit-transform:rotateY(0deg);
+   }
+   
+   100% {
+      left:0;
+      -webkit-transform:rotateY(0deg);
+   }
+ }
+
+
+  #logout{
+    float: right;
   }
- 
- 
 
 

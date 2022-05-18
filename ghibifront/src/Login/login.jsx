@@ -24,7 +24,7 @@ const Login = ()=>{
     const handleSubmit = async (e) =>{
         e.preventDefault()
         try{
-            const{data} = await axios.post('http://localhost:4000/login',{
+            const{data} = await axios.post('https://backend-studioghibli-app.herokuapp.com/login',{
                 ...newForm,
             },
             {
@@ -38,7 +38,7 @@ const Login = ()=>{
                     if(email) generateError(email)
                     else if(password) generateError(password)
                 }else{
-                    navigate('/')
+                    navigate('/userpage')
                 }
             }
 

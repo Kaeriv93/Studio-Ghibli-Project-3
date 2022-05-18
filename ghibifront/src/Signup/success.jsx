@@ -12,7 +12,7 @@ const Success = () =>{
             if(!cookie.jwt){
                 navigate('/login')
             }else{
-                const{data} = await axios.post('https://backend-studioghibli-app.herokuapp.com/register',
+                const{data} = await axios.post('https://backend-studioghibli-app.herokuapp.com',
                 {},
                 {withCredentials:true})
                 if(!data.status){

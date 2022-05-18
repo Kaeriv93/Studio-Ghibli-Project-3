@@ -83,7 +83,7 @@
     animation:linear infinite;
     animation-name:run;
     animation-duration:20s;
-    transform: scaleX(-1);
+ 
  }
  @keyframes run  {
     0% {

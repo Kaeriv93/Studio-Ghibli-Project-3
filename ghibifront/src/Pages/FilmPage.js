@@ -1,14 +1,28 @@
 import {useParams} from 'react-router-dom'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import './Pages.css'
 
 const FilmPage = (props)=>{
-    const [review,setReview] = useState(null)
-
-    console.log(props)
     let {id} = useParams()
     let film = props.film[id]
-    return(
+    let review = props.review
+    const [newForm, setNewForm] = useState({
+        content:''
+    })
+
+    const handleChange = (e) =>{
+        setNewForm({...newForm, [e.target.name]:e.target.value})
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        props.createReview(newForm)
+        setNewForm({
+            content:''
+        })
+    }
+
+    return 1 > 0? (
         <div className="showpage">
             <div className="moviebanner">
                 <img className="backdrop" src={film.movie_banner} alt={film.title}/>
@@ -34,9 +48,20 @@ const FilmPage = (props)=>{
             </div>
             <div className="review">
                 <h3>Leave a review below!</h3>
+                    <div>
+                        {review.map((review,idx)=>(
+                            <p key={idx}>{review.content} {review.rating}/5</p>
+                        ))}
+                    </div>
+                    <section className="review-section">
+                        <form onSubmit={handleSubmit} autocomplete="off">
+                            <input type='text' value={newForm.content} name='content' placeholder='Leave a review' onChange={handleChange}/>
+                            <input id="reviewsubmit" type='submit' value='Submit'/>
+                        </form>
+                    </section>
             </div>
 
         </div>
-    )
+    ): <h1>Can't Load</h1>
 }
 export default FilmPage

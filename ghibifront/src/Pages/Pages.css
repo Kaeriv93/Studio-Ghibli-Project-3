@@ -77,3 +77,8 @@
     text-align: center;
     color: white;
 }
+
+#reviewsubmit{
+    position: relative;
+    right:25%;
+}

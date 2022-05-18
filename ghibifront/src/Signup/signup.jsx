@@ -77,6 +77,7 @@ const Signup = (props) =>{
                         <label for ="password"><b>Password</b></label>
                         <input type="password" value={newForm.password} placeholder="Enter Password" name="password" required onChange={handleChange}/>
                         <input type="submit" value="Sign Up"/>
+                    
 
                     </div>
                 </div>

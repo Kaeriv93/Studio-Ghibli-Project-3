@@ -25,18 +25,14 @@ function Main(props){
         getData();
     }, []);
 
-    useEffect(()=>{
-        const reviewData = async() =>{
-            const response = await fetch('https://backend-studioghibli-app.herokuapp.com/reviews');
-            const data = await response.json();
-            setReview(data);
-            console.log(data);
-        }
-        reviewData();
-    },[]);
+   const reviewData = () =>{
+       fetch('https://backend-studioghibli-app.herokuapp.com/reviews/')
+       .then(response => response.json())
+       .then(result => setReview(result))
+   }
 
     const createReview = async(review) =>{
-        await fetch ('https://backend-studioghibli-app.herokuapp.com/reviews',{
+        await fetch ('https://backend-studioghibli-app.herokuapp.com/reviews/',{
             method:'post',
             headers:{
                 'Content-Type': 'application/json',
@@ -45,6 +41,17 @@ function Main(props){
         })
     }
 
+    const deleteReview = async id =>{
+        await fetch('https://backend-studioghibli-app.herokuapp.com/reviews/' + id,{
+            method:'delete'
+        })
+        reviewData()
+    }
+
+    useEffect(() => reviewData(),[])
+
+
+
     return(
         <main>
             <Routes>
@@ -52,7 +59,7 @@ function Main(props){
                 element={<List
                 film ={film}
                 />}/>
-                <Route path='/:id' element={<FilmPage film={film} review={review} createReview={createReview}/>}/>
+                <Route path='/:id' element={<FilmPage film={film} review={review} createReview={createReview}/>} deleteReview={deleteReview}/>
                 <Route exact path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup/>}/>
             </Routes>

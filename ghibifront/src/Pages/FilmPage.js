@@ -9,17 +9,21 @@ const FilmPage = (props)=>{
     const [newForm, setNewForm] = useState({
         content:''
     })
-
+    
     const handleChange = (e) =>{
         setNewForm({...newForm, [e.target.name]:e.target.value})
     }
-
+    
     const handleSubmit = (e)=>{
         e.preventDefault()
         props.createReview(newForm)
         setNewForm({
             content:''
         })
+    }
+    const removeReview = () =>{
+        props.deleteReview(id)
+        console.log(props.deleteReview)
     }
 
     return 1 > 0? (

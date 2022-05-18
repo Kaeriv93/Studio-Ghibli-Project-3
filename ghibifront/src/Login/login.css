@@ -1,5 +1,11 @@
 form {border: 3px solid #f1f1f1;}
 
+.flex-container{
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -24,7 +30,7 @@ button:hover {
 }
 
 .cancelbtn {
-  width: auto;
+  width: 100%;
   padding: 10px 18px;
   background-color: #f44336;
 }
@@ -35,12 +41,13 @@ button:hover {
 }
 
 img.avatar {
-  width: 40%;
+  width: 20%;
   border-radius: 50%;
 }
 
 .container {
   padding: 16px;
+  max-width: 30vh;
 }
 
 span.psw {

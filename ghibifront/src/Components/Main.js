@@ -4,9 +4,15 @@ import FilmPage from "../Pages/FilmPage";
 import Login from '../Login/login'
 import Signup from '../Signup/signup'
 import List from './Test'
+import Success from '../Signup/success';
 
 function Main(props){
     const [film, setFilm] = useState(null);
+    const [review,setReview] = useState({
+        reviews:[{review:'Wow I really loved this film a lot!'}]
+    })
+
+
 
     const URL = "https://ghibliapi.herokuapp.com/films";
 
@@ -15,10 +21,37 @@ function Main(props){
             const response = await fetch(URL);
             const data = await response.json();
             setFilm(data);
-            console.log(data)
+            console.log(data);
         };
         getData();
     }, []);
+
+   const reviewData = () =>{
+       fetch('https://backend-studioghibli-app.herokuapp.com/reviews/')
+       .then(response => response.json())
+       .then(result => setReview(result))
+   }
+
+    const createReview = async(review) =>{
+        await fetch ('https://backend-studioghibli-app.herokuapp.com/reviews/',{
+            method:'post',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(review)
+        })
+    }
+
+    const deleteReview = async id =>{
+        await fetch('https://backend-studioghibli-app.herokuapp.com/reviews/' + id,{
+            method:'delete'
+        })
+        reviewData()
+    }
+
+    useEffect(() => reviewData(),[])
+
+
 
     return(
         <main>
@@ -27,9 +60,10 @@ function Main(props){
                 element={<List
                 film ={film}
                 />}/>
-                <Route path='/:id' element={<FilmPage film={film}/>}/>
+                <Route path='/:id' element={<FilmPage film={film} review={review} createReview={createReview}/>} deleteReview={deleteReview}/>
                 <Route exact path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup/>}/>
+                <Route path='/success' element={<Success/>}/>
             </Routes>
         </main>
 

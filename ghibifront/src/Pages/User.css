@@ -17,7 +17,7 @@
     grid-area: space;
 }
 
-img{
+.profile img{
     max-height: 200px;
     max-width: 200px;
 }

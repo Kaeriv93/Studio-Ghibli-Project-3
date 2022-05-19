@@ -11,7 +11,6 @@ const Header = (props) =>{
     
     useEffect(()=>{
         const logout = document.getElementById('logout')
-        console.log(logout)
         const verifyUser = async()=>{
             if(!cookie.jwt){
                 logout.style="display:normal"

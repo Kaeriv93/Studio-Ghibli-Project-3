@@ -16,8 +16,10 @@
 .userpic{
     grid-area: space;
 }
-.userpic img{
-    border-radius: 50%;
+
+img{
+    max-height: 200px;
+    max-width: 200px;
 }
 
 .user-title{

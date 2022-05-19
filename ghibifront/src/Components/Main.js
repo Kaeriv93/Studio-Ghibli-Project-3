@@ -9,6 +9,7 @@ import UserPage from '../Pages/UserPage';
 
 function Main(props){
     const [film, setFilm] = useState(null);
+    const [user ,setUser] =useState(null);
     const [review,setReview] = useState({
         reviews:[{review:'Wow I really loved this film a lot!'}]
     })
@@ -22,7 +23,6 @@ function Main(props){
             const response = await fetch(URL);
             const data = await response.json();
             setFilm(data);
-            console.log(data);
         };
         getData();
     }, []);
@@ -52,6 +52,15 @@ function Main(props){
 
     useEffect(() => reviewData(),[])
 
+    useEffect(() => {
+        const getUser = async () => {
+            const response = await fetch('https://backend-studioghibli-app.herokuapp.com/users/');
+            const data = await response.json();
+            setUser(data);
+        };
+        getUser();
+    }, []);
+
 
 
     return(
@@ -65,7 +74,7 @@ function Main(props){
                 <Route exact path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/success' element={<Success/>}/>
-                <Route path ='/userpage' element={<UserPage/>}/>
+                <Route path ='/userpage/:id' element={<UserPage user={user}/>}/>
             </Routes>
         </main>
 

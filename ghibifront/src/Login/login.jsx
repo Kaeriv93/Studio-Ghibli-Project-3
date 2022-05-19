@@ -1,5 +1,5 @@
 import './login.css'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import axios from 'axios'
@@ -18,7 +18,6 @@ const Login = ()=>{
 
     const handleChange = (e) =>{
         setNewForm({...newForm, [e.target.name]:e.target.value})
-        console.log(e.target.value)
     }
 
     const handleSubmit = async (e) =>{
@@ -31,14 +30,14 @@ const Login = ()=>{
                 withCredentials:true,
             }
             )
-            
+            console.log(data)
             if(data){
                 if(data.errors){
                     const {email,password} = data.errors
                     if(email) generateError(email)
                     else if(password) generateError(password)
                 }else{
-                    navigate('/userpage')
+                    navigate(`/userpage/1`)
                 }
             }
 

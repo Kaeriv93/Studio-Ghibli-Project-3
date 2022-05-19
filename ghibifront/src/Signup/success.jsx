@@ -12,7 +12,7 @@ const Success = () =>{
             if(!cookie.jwt){
                 navigate('/login')
             }else{
-                const{data} = await axios.post('https://backend-studioghibli-app.herokuapp.com',
+                const{data} = await axios.post('https://backend-studioghibli-app.herokuapp.com/',
                 {},
                 {withCredentials:true})
                 if(!data.status){
@@ -23,14 +23,9 @@ const Success = () =>{
         }
         verifyUser()
     },[cookie,navigate,removeCookie])
-    const logOut = () =>{
-        removeCookie('jwt')
-        navigate('/')
-    }
     return(
         <>
             <h1 className="successful">Signup was Successful!</h1>
-            <button onClick={logOut}>LogOut</button>
             <ToastContainer/>
         </>
     )

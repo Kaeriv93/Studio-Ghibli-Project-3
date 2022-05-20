@@ -10,11 +10,12 @@ Api Documentation URL : https://ghibliapi.herokuapp.com/
 
 Used Sandbox to test: https://codesandbox.io/s/wizardly-rumple-5j1z7r
 
-#FrontEnd/Backend Repo
+# FrontEnd/Backend Repo
 https://github.com/Kaeriv93/Studio-Ghibli-BackEND
+
 https://github.com/Kaeriv93/ghibi-front-end
 
-#Deployed Here
+# Deployed Here
 https://luminous-naiad-8a44ad.netlify.app/
 
 # MVP
@@ -36,6 +37,13 @@ User Show Page
 
 main wireframe
 ![main frame](https://user-images.githubusercontent.com/99516928/168607980-aa43d733-4e0d-409c-8870-05ec0ab20295.png)
+
+# ScreenShots
+![Carousel](https://user-images.githubusercontent.com/95429272/169448263-d7a14967-38d4-4444-9574-1596f2352b1d.png)
+![showpage](https://user-images.githubusercontent.com/95429272/169448272-15cd6602-2211-4123-8e53-effe675d7fdf.png)
+![login](https://user-images.githubusercontent.com/95429272/169448283-2e221845-08a1-4778-8058-8dd19b985c0e.png)
+![Profile](https://user-images.githubusercontent.com/95429272/169448289-4dae4e52-263f-4a7f-b8b9-ca3f886a24e0.png)
+
 
 
 # Stretch Goals

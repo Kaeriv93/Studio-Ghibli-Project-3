@@ -10,7 +10,12 @@ Api Documentation URL : https://ghibliapi.herokuapp.com/
 
 Used Sandbox to test: https://codesandbox.io/s/wizardly-rumple-5j1z7r
 
+#FrontEnd/Backend Repo
+https://github.com/Kaeriv93/Studio-Ghibli-BackEND
+https://github.com/Kaeriv93/ghibi-front-end
 
+#Deployed Here
+https://luminous-naiad-8a44ad.netlify.app/
 
 # MVP
 1. We will provide routes, so when a specific movie is clicked on we will be taken to that page.
